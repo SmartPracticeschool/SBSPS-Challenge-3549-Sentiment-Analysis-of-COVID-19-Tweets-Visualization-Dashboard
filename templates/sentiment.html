@@ -1,0 +1,118 @@
+
+<html>
+<html lang="en-US">
+    <head>
+        <title>Twitter Sentiment Analysis of {{ name }} || ZINGY</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div class="loginbox">
+        <a href="/"><img src="{{ url_for('static', filename='logo.png') }}" class="avatar"></a>
+            <h1>Sentiment Analysis</h1>
+
+
+            <!--<form method="post" name="Userinput" id="Userinput" action="/sentiment">
+                <p>UserID</p>
+                <input type="text" name="userid" placeholder="Enter UserID without @">
+                <p>HashTag</p>
+                <input type="text" name="hashtag" placeholder="Enter HashTag with #">
+                <center><button type="submit" class="btn btn-light btn-outline-success" id="sendMessageButton">Get Analysis</button></center>
+                <br>
+                <center><a href="#"><h6 style="color: red" >{{ error }}</h6></a></center>
+                <a href="https://bit.ly/2Ky3ho6"><h5>Yogesh Nile</h5></a>
+            </form>
+            -->
+
+            <p style="color: #008000">Positive:- {{ positive }} %</p><center><p style="font-size: 35px">&#128578;</p></center>
+            
+            <p style="color: red">Negative:- {{ negative }} %</p><center><p style="font-size: 35px">&#128577;</p></center>
+            
+            <p style="color: #FFFF00">Neutral:- {{ neutral }} %</p><center><p style="font-size: 35px">&#128580;</p></center>
+             
+            <div id="donutchart"></div>
+            <!---<style>
+          body, 
+    .piechart { 
+        display: flex; 
+        justify-content:right; 
+        align-items: right; 
+    } 
+     </style>-->
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+  google.load("visualization", "1", {packages:["corechart"]});
+  google.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ['Task', 'Percentage'],
+      ['Positive',     {{positive}}],
+      ['Negative',     {{negative}}],
+      ['Netural',  {{neutral}}]
+      
+     
+    ]);
+
+
+    var options = {
+      title: 'Piechart Analysis',
+          pieHole: 0.3,
+      colors:['#5F9EA0','#D8BFD8','#DDA0DD','#B0C4DE','#a09f9f','#31536e','#4c7ea4','#73bfe5','#88d6f8'],
+      pieSliceText:['none'],
+      legend:{position: 'bottom'},
+      chartArea:{left:6,top:6,width:"400px",height:"350px"}
+    };
+     
+
+    var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+    chart.draw(data, options);
+  }
+</script>
+
+   <div id="donutchart" style="width: 400px; height: 350px;"></div>
+</head>
+<body>
+    <div id="container" style="width: 400px; height: 350px; margin: 0 auto"></div>
+     <style>
+          body, 
+    .container { 
+        display: flex; 
+        justify-content:left; 
+        align-items: left; 
+    } 
+     </style>
+    <script language="JavaScript">
+        function drawChart() {
+            /* Define the chart to be drawn.*/
+            var data = google.visualization.arrayToDataTable([
+                ['Page Vist', 'Tweets'],
+                ['Postive',{{positive}}],
+                ['Negative',{{negative}}],
+                ['Neutral',{{neutral}}],
+            ]);
+            var options = {
+                title: 'Bar Chart Sentiment Analysis',
+                isStacked: true
+            };
+            /* Instantiate and draw the chart.*/
+            var chart = new google.visualization.BarChart(document.getElementById('container'));
+            chart.draw(data, options);
+        }
+        google.charts.setOnLoadCallback(drawChart);
+    </script>
+</body>
+
+          <br>
+            <center><a href="/"><button class="btn btn-light btn-outline-success" id="sendMessageButton">&#8592; Back to Home</button></a>
+            </center>
+            <br>
+            <center><a href="https://coronawebapp.shinyapps.io/corona19/"><button class="btn btn-light btn-outline-success" id="sendMessageButton">corona statistical analysis</button></a>
+            </center>
+      
+            
+        </div>
+
+    </body>
+</html>
