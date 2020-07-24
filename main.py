@@ -24,10 +24,10 @@ def sentiment():
         return render_template('index.html', error=error)
 
     #======================Insert Twitter API Here==========================
-    consumerKey = "Krdl7sHvx27oN5pdPMKlB9WAX"
-    consumerSecret = "jKMB1zWrjN4bXV7s8iXSGa7Xdg2Dq5uY3OeF7xKG9JspiJj0Vr"
-    accessToken = "1272795551700934659-ADpBIYlJiME6S7N23Ql0F7Toyb3DSX"
-    accessTokenSecret = "cAmB2kww6fFskk39YHFIQCvfBqZRc54zTWPkBHzChNwtk"
+    consumerKey = "Consumer Key"
+    consumerSecret = "Consumer Secret"
+    accessToken = "Access Token "
+    accessTokenSecret = "Access Token secret"
     #======================Insert Twitter API End===========================
     
     authenticate = tweepy.OAuthHandler(consumerKey, consumerSecret)
